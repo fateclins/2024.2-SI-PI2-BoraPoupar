@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    color-scheme: light !important;
+  }
+}
+
+ion-content {
+  --background: #F5F0FB;
+}
+
+.toolbar-background {
+  --border-width: 0px;
+  --border-style: none;
+  --border-color: transparent;
+}
+
+/* Retira borda do footer ios */
+.footer-ios ion-toolbar:first-of-type {
+  --border-width: 0px;
+  --border-style: none;
+  --border-color: transparent;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* Retira borda do footer android */
+.footer-android ion-toolbar:first-of-type {
+  --border-width: 0px;
+  --border-style: none;
+  --border-color: transparent;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
