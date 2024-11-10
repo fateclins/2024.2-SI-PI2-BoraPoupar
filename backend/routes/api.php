@@ -9,4 +9,5 @@ Route::get('/user', function (Request $request) {
 
 Route::prefix('v1')->group(function () {
     require_once __DIR__ . '/api/v1/auth.php';
+    require_once __DIR__ . '/api/v1/transactions.php';
 });

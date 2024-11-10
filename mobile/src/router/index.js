@@ -23,7 +23,15 @@ const routes = [
   {
     path: "/transactions",
     name: "Transactions",
-    component: () => import("@/pages/Transactions.vue"),
+    component: () => import("@/pages/Transactions/Index.vue"),
+    meta: {
+      auth: true,
+    },
+  },
+  {
+    path: "/transactions/create",
+    name: "CreateTransaction",
+    component: () => import("@/pages/Transactions/Create.vue"),
     meta: {
       auth: true,
     },

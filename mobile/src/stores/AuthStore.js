@@ -68,6 +68,7 @@ export const useAuthStore = defineStore("auth", {
 
         if (response.status === 401) {
           await Preferences.remove({ key: "token" });
+          await Preferences.remove({ key: "user" });
           this.isAuthenticated = false;
           return;
         }
@@ -77,6 +78,7 @@ export const useAuthStore = defineStore("auth", {
       } catch (error) {
         this.isAuthenticated = false;
         await Preferences.remove({ key: "token" });
+        await Preferences.remove({ key: "user" });
         return;
       }
     },
