@@ -13,6 +13,10 @@ class UpdateTransactionController extends Controller
     public function __invoke(UpdateTransactionRequest $request, Transaction $transaction): JsonResponse
     {
         try {
+            if ($transaction->user_id !== Auth::id()) {
+                return response()->json(['message' => 'Forbidden'], 403);
+            }
+
             $data = $request->validated();
 
             $old_amount = $transaction->amount;

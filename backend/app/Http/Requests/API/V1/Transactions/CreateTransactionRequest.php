@@ -15,7 +15,7 @@ class CreateTransactionRequest extends FormRequest
     {
         return [
             'category_id' => 'nullable|exists:categories,id',
-            'amount' => 'required|numeric',
+            'amount' => 'required|numeric|min:0',
             'note' => 'nullable|string',
             'user_id' => 'required|exists:users,id',
             'type' => 'required|in:expense,income',

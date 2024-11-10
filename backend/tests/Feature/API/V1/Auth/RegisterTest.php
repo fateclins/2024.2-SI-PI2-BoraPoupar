@@ -146,4 +146,3 @@ it('cannot register with invalid password', function () {
 
     $this->assertDatabaseCount('users', 0);
 });
-

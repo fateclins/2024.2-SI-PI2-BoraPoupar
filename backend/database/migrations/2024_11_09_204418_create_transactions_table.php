@@ -6,6 +6,11 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    public function down(): void
+    {
+        Schema::dropIfExists('transactions');
+    }
+
     public function up(): void
     {
         Schema::create('transactions', function (Blueprint $table) {
@@ -18,10 +23,5 @@ return new class extends Migration
             $table->text('note')->nullable();
             $table->timestamps();
         });
-    }
-
-    public function down(): void
-    {
-        Schema::dropIfExists('transactions');
     }
 };

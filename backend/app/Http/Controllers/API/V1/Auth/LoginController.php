@@ -13,7 +13,7 @@ class LoginController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        if(!$request->has('email') || !$request->has('password')) {
+        if (! $request->has('email') || ! $request->has('password')) {
             return response()->json([
                 'message' => 'The given data was invalid.',
                 'errors' => [

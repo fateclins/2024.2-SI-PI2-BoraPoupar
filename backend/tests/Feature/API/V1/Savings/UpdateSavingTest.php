@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\User;
 use App\Models\Saving;
+use App\Models\User;
 
 beforeEach(function () {
     $this->authUser = User::factory()->create();

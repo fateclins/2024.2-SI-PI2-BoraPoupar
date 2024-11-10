@@ -11,6 +11,12 @@ class ShowTransactionController extends Controller
 {
     public function __invoke(Request $request, Transaction $transaction): JsonResponse
     {
+        if ($transaction->user_id !== $request->user()->id) {
+            return response()->json([
+                'message' => 'Forbidden',
+            ], 403);
+        }
+
         return response()->json($transaction, 200);
     }
 }

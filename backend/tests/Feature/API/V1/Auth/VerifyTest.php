@@ -20,4 +20,3 @@ it('should return 401 if user is not verified', function () {
 
     $response->assertUnauthorized();
 });
-

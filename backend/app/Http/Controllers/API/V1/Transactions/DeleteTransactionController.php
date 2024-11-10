@@ -12,6 +12,12 @@ class DeleteTransactionController extends Controller
 {
     public function __invoke(Request $request, Transaction $transaction): JsonResponse
     {
+        if ($transaction->user_id !== Auth::id()) {
+            return response()->json([
+                'message' => 'You are not authorized to delete this transaction',
+            ], 403);
+        }
+
         $amount = $transaction->amount;
 
         /** @var \App\Models\User $user */

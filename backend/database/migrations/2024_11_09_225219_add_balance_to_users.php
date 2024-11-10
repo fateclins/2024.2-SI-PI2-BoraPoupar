@@ -6,18 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    public function down(): void
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('balance');
+        });
+    }
+
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
             $table->decimal('balance', 20, 2)->default(0)
                 ->after('email');
-        });
-    }
-
-    public function down(): void
-    {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('balance');
         });
     }
 };

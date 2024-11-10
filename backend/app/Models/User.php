@@ -25,12 +25,9 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    protected function casts(): array
+    public function savings(): HasMany
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->hasMany(Saving::class);
     }
 
     public function transactions(): HasMany
@@ -38,8 +35,11 @@ class User extends Authenticatable
         return $this->hasMany(Transaction::class);
     }
 
-    public function savings(): HasMany
+    protected function casts(): array
     {
-        return $this->hasMany(Saving::class);
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
     }
 }

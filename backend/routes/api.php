@@ -10,7 +10,7 @@ Route::get('/user', function (Request $request) {
 Route::prefix('v1')
     ->name('api.v1.')
     ->group(function () {
-        require __DIR__ . '/api/v1/auth.php';
-        require __DIR__ . '/api/v1/transactions.php';
-        require __DIR__ . '/api/v1/savings.php';
+        require __DIR__.'/api/v1/auth.php';
+        require __DIR__.'/api/v1/transactions.php';
+        require __DIR__.'/api/v1/savings.php';
     });
