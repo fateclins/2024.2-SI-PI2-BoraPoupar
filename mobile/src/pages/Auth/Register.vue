@@ -4,6 +4,7 @@ import { IonPage, IonContent } from '@ionic/vue';
 import RegisterForm from '@/components/Auth/RegisterForm.vue';
 import { useAuthStore } from "@/stores/AuthStore";
 import { useIonRouter } from '@ionic/vue';
+import { Button } from 'primevue';
 
 const { register } = useAuthStore();
 
@@ -33,6 +34,8 @@ const submit = async () => {
 <template>
   <Ion-Page>
     <Ion-Content>
+      <Button @click="router.push('/auth')" class="!ml-2 !mt-2" icon="pi pi-arrow-left" rounded aria-label="Voltar" />
+
       <div class="flex items-center justify-center mt-16 mb-12">
         <img src="/imgs/register_page.svg" alt="Ionic Vue logo" class="w-52" />
       </div>
