@@ -7,8 +7,10 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::prefix('v1')->group(function () {
-    require_once __DIR__.'/api/v1/auth.php';
-    require_once __DIR__.'/api/v1/transactions.php';
-    require_once __DIR__.'/api/v1/savings.php';
-});
+Route::prefix('v1')
+    ->name('api.v1.')
+    ->group(function () {
+        require __DIR__ . '/api/v1/auth.php';
+        require __DIR__ . '/api/v1/transactions.php';
+        require __DIR__ . '/api/v1/savings.php';
+    });

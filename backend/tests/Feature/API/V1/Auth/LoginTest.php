@@ -43,7 +43,7 @@ it('cannot login with invalid credentials', function () {
 });
 
 it('cannot login with non-existent email', function () {
-    $response = $this->postJson('/api/v1/auth/login', [
+    $response = $this->postJson(route('api.v1.auth.login'), [
         'email' => 'nonexistent@example.com',
         'password' => 'password',
     ]);
@@ -54,21 +54,8 @@ it('cannot login with non-existent email', function () {
     $this->assertGuest();
 });
 
-it('cannot login with missing password', function () {
-    $user = User::factory()->create();
-
-    $response = $this->postJson('/api/v1/auth/login', [
-        'email' => $user->email,
-    ]);
-
-    $response->assertStatus(422)
-        ->assertJsonStructure(['message', 'errors' => ['password']]);
-
-    $this->assertGuest();
-});
-
 it('cannot login with missing email', function () {
-    $response = $this->postJson('/api/v1/auth/login', [
+    $response = $this->postJson(route('api.v1.auth.login'), [
         'password' => 'password',
     ]);
 

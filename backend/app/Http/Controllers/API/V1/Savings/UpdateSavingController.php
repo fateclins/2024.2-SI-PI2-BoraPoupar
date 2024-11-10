@@ -11,6 +11,12 @@ class UpdateSavingController extends Controller
 {
     public function __invoke(Request $request, Saving $saving): JsonResponse
     {
+        if ($saving->user_id !== $request->user()->id) {
+            return response()->json([
+                'message' => 'Forbidden',
+            ], 403);
+        }
+
         $data = $request->validate([
             'amount' => 'required|numeric',
         ]);
