@@ -6,6 +6,8 @@ import { useUserStore } from "@/stores/UserStore";
 export const useSavingStore = defineStore("saving", {
   state: () => ({
     savings: [],
+    showSavingModal: false,
+    actualSaving: null,
   }),
 
   actions: {
@@ -90,5 +92,45 @@ export const useSavingStore = defineStore("saving", {
         console.error(error);
       }
     },
+
+    async toggleModal() {
+      this.showSavingModal = !this.showSavingModal;
+    },
+
+    async setActualSaving(saving) {
+      this.actualSaving = saving;
+    },
+
+    async saveAmount(amount) {
+      const token = await getToken();
+      const userStore = useUserStore();
+
+      try {
+        const response = await api.put(`savings/${this.actualSaving.id}`, {
+          amount,
+        }, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (response.status === 200) {
+          this.savings = this.savings.map((saving) => {
+            if (saving.id === this.actualSaving.id) {
+              saving.amount = amount;
+            }
+
+            return saving;
+          });
+
+          this.showSavingModal = false;
+          this.actualSaving = null;
+        }
+
+        return response.data;
+      } catch (error) {
+        console.error(error);
+      }
+    }
   },
 });

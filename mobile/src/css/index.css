@@ -43,3 +43,11 @@ ion-content {
 .p-toast {
   padding: 0.5rem 1rem !important;
 }
+
+.p-dialog-mask {
+  padding: 1rem !important;
+}
+
+.p-dialog-header-actions button {
+  display: none !important;
+}

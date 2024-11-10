@@ -4,7 +4,6 @@ namespace App\Http\Controllers\API\V1\Transactions;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\V1\Transactions\UpdateTransactionRequest;
-use Illuminate\Http\Request;
 use App\Models\Transaction;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;

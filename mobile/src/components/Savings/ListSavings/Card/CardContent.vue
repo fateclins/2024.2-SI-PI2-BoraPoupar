@@ -1,7 +1,8 @@
 <script setup>
 import { useUserStore } from '@/stores/UserStore';
 import { computed } from 'vue';
-const props = defineProps(['saving'])
+const props = defineProps(['saving']);
+import { ProgressBar } from 'primevue';
 
 const userStore = useUserStore();
 
@@ -16,6 +17,12 @@ const truncate = (text) => {
 
   return text;
 };
+
+const percentage = computed(() => {
+  if (!props.saving.goal) return 0;
+  return (props.saving.amount / props.saving.goal) * 100;
+});
+
 </script>
 <template>
   <div class="flex justify-between items-center">
@@ -34,5 +41,9 @@ const truncate = (text) => {
 
   <div class="mt-4">
     <p class="text-sm">{{ truncate(saving.description) }}</p>
+  </div>
+
+  <div class="mt-4" v-if="saving.goal">
+    <ProgressBar :value="percentage" />
   </div>
 </template>

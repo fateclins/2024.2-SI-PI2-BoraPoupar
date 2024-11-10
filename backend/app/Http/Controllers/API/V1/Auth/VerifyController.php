@@ -15,7 +15,7 @@ class VerifyController extends Controller
         if ($user) {
             return response()->json([
                 'message' => 'User is verified',
-            'user' => $user->only('id', 'name', 'email', 'balance'),
+                'user' => $user->only('id', 'name', 'email', 'balance'),
             ]);
         }
     }

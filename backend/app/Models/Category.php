@@ -11,7 +11,7 @@ class Category extends Model
         'name',
         'type',
     ];
-    
+
     public function transactions(): HasMany
     {
         return $this->hasMany(Transaction::class);

@@ -151,6 +151,7 @@ export const useTransactionStore = defineStore("transaction", {
 
         if (response.status === 200) {
           this.transactions = this.transactions.filter((t) => t.id !== id);
+          this.recentTransactions = this.recentTransactions.filter((t) => t.id !== id);
           return response.data;
         }
 

@@ -8,7 +8,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::prefix('v1')->group(function () {
-    require_once __DIR__ . '/api/v1/auth.php';
-    require_once __DIR__ . '/api/v1/transactions.php';
-    require_once __DIR__ . '/api/v1/savings.php';
+    require_once __DIR__.'/api/v1/auth.php';
+    require_once __DIR__.'/api/v1/transactions.php';
+    require_once __DIR__.'/api/v1/savings.php';
 });

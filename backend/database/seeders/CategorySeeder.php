@@ -10,11 +10,6 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         Category::firstOrCreate([
-            'name' => 'Salário',
-            'type' => 'income',
-        ]);
-
-        Category::firstOrCreate([
             'name' => 'Freelance',
             'type' => 'income',
         ]);
@@ -25,27 +20,17 @@ class CategorySeeder extends Seeder
         ]);
 
         Category::firstOrCreate([
+            'name' => 'Salário',
+            'type' => 'income',
+        ]);
+
+        Category::firstOrCreate([
             'name' => 'Outros',
             'type' => 'income',
         ]);
 
         Category::firstOrCreate([
-            'name' => 'Comida',
-            'type' => 'expense',
-        ]);
-
-        Category::firstOrCreate([
-            'name' => 'Transporte',
-            'type' => 'expense',
-        ]);
-
-        Category::firstOrCreate([
-            'name' => 'Lazer',
-            'type' => 'expense',
-        ]);
-
-        Category::firstOrCreate([
-            'name' => 'Saúde',
+            'name' => 'Alimentação',
             'type' => 'expense',
         ]);
 
@@ -55,7 +40,22 @@ class CategorySeeder extends Seeder
         ]);
 
         Category::firstOrCreate([
+            'name' => 'Lazer',
+            'type' => 'expense',
+        ]);
+
+        Category::firstOrCreate([
             'name' => 'Moradia',
+            'type' => 'expense',
+        ]);
+
+        Category::firstOrCreate([
+            'name' => 'Saúde',
+            'type' => 'expense',
+        ]);
+
+        Category::firstOrCreate([
+            'name' => 'Transporte',
             'type' => 'expense',
         ]);
 

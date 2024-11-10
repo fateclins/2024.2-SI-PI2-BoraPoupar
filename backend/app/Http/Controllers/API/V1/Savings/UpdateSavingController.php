@@ -7,14 +7,18 @@ use App\Models\Saving;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
-class DeleteSavingController extends Controller
+class UpdateSavingController extends Controller
 {
     public function __invoke(Request $request, Saving $saving): JsonResponse
     {
-        $saving->delete();
+        $data = $request->validate([
+            'amount' => 'required|numeric',
+        ]);
+
+        $saving->update($data);
 
         return response()->json([
-            'message' => 'Saving deleted successfully',
+            'message' => 'Saving updated successfully',
         ], 200);
     }
 }

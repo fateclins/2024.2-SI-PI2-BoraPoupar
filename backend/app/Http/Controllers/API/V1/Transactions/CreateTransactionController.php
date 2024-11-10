@@ -16,13 +16,14 @@ class CreateTransactionController extends Controller
             $data = $request->validated();
 
             $transaction = Transaction::create($data);
-            
+
             /** @var \App\Models\User $user */
             $user = Auth::user();
 
             if ($transaction->type === 'expense') {
                 $user->balance -= $transaction->amount;
                 $user->save();
+
                 return response()->json($transaction, 201);
             }
 

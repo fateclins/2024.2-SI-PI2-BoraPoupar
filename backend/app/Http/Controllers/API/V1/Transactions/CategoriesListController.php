@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\API\V1\Transactions;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Category;
-use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class CategoriesListController extends Controller
 {

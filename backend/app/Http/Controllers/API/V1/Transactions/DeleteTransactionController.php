@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\API\V1\Transactions;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Transaction;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class DeleteTransactionController extends Controller
@@ -15,7 +15,6 @@ class DeleteTransactionController extends Controller
         $amount = $transaction->amount;
 
         /** @var \App\Models\User $user */
-
         $user = Auth::user();
         if ($transaction->type === 'expense') {
             $user->balance += $amount;
@@ -27,7 +26,7 @@ class DeleteTransactionController extends Controller
         $user->save();
 
         return response()->json([
-            'message' => 'Transaction deleted successfully'
+            'message' => 'Transaction deleted successfully',
         ], 200);
     }
 }

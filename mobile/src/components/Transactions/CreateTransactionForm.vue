@@ -27,9 +27,9 @@ const submit = () => {
   <div class="mt-12">
     <InputGroup>
       <InputGroupAddon>
-        <i class="pi pi-user"></i>
+        <i class="pi pi-hashtag"></i>
       </InputGroupAddon>
-      <InputText :required="true" v-model="name" placeholder="Nome" :disabled="disable" />
+      <InputText :required="true" v-model="name" placeholder="Nome da transação" :disabled="disable" />
     </InputGroup>
 
     <InputGroup class="mt-4">

@@ -13,7 +13,7 @@ const categories = ref([]);
 const categoriesSelectDisabled = ref(false);
 
 const name = ref('');
-const amount = ref(0);
+const amount = ref(null);
 const type = ref('');
 const note = ref('');
 const category = ref('');

@@ -21,12 +21,6 @@ const submit = async () => {
   disable.value = true;
   
   try {
-    console.log({
-      name: name.value,
-      amount: amount.value,
-      description: description.value,
-      goal: goal.value,
-    })
     await useSaving.createSaving({
       name: name.value,
       amount: amount.value,

@@ -25,7 +25,7 @@ const goTo = (path) => {
           :class="{ '!text-green-500': route.path === '/home', '!text-gray-800': route.path !== '/' }"
           @click="goTo('/home')" />
 
-        <Button variant="text" rounded icon="pi pi-list" iconPos="top"
+        <Button variant="text" rounded icon="pi pi-money-bill" iconPos="top"
           :class="{ '!text-green-500': route.path === '/transactions', '!text-gray-800': route.path !== '/transactions' }"
           @click="goTo('/transactions')" />
 
