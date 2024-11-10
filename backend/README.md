@@ -23,6 +23,8 @@ API para o aplicativo BoraPoupar, que tem como um dos objetivos ajudar o usuári
 
 - O projeto contém um painel de monitoramento utilizando o Laravel Pulse, dessa forma é possível monitorar o status da aplicação em tempo real.
 
+- Analisador de código estático PHPStan + LaraStan em seu maior nível de análise para garantir a qualidade do código.
+
 ## Como rodar o projeto?
 
 1. Clone o repositório

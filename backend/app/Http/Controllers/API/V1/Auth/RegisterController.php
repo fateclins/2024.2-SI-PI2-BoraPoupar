@@ -14,6 +14,10 @@ class RegisterController extends Controller
     {
         $data = $request->validated();
 
+        if (! is_string($data['password'])) {
+            return response()->json(['error' => 'Invalid password type'], 400);
+        }
+
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],

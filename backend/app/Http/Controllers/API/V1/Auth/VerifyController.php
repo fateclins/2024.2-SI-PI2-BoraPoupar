@@ -18,5 +18,9 @@ class VerifyController extends Controller
                 'user' => $user->only('id', 'name', 'email', 'balance'),
             ]);
         }
+
+        return response()->json([
+            'message' => 'User is not verified',
+        ], 401);
     }
 }

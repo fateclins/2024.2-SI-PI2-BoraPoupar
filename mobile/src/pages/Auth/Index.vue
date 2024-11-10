@@ -8,7 +8,7 @@ import { Button } from 'primevue';
     <Ion-Content>
 
       <div class="flex items-center justify-center mt-16 mb-12">
-        <img src="/imgs/auth_page.svg" alt="Ionic Vue logo" class="w-72" />
+        <img src="/imgs/auth_page.svg" alt="Ionic Vue logo" class="w-52" />
       </div>
 
       <div class="p-4">

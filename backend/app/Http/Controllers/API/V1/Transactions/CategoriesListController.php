@@ -4,11 +4,12 @@ namespace App\Http\Controllers\API\V1\Transactions;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class CategoriesListController extends Controller
 {
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): JsonResponse
     {
         $type = $request->query('type');
 

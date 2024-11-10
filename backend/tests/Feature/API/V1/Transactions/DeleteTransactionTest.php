@@ -57,7 +57,12 @@ it('should not delete a transaction that does not exist', function () {
 });
 
 it('should not delete a transaction that belongs to another user', function () {
-    $transaction = Transaction::factory()->create();
+
+    $anotherUser = User::factory()->create();
+
+    $transaction = Transaction::factory()->create([
+        'user_id' => $anotherUser->id,
+    ]);
 
     $response = $this->deleteJson(route('api.v1.transactions.delete', ['transaction' => $transaction->id]));
 

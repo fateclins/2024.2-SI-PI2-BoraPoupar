@@ -1,0 +1,15 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+
+    paths:
+        - app/
+
+    level: 9
+
+    treatPhpDocTypesAsCertain: false
+
+    ignoreErrors:
+        - '#Class App\\Models\\.* uses generic trait Illuminate\\Database\\Eloquent\\Factories\\HasFactory but does not specify its types: TFactory#'
+        - '#Method App\\Models\\.*::.*\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\.* does not specify its types: TRelatedModel, TDeclaringModel#'
