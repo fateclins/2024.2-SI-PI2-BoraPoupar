@@ -17,10 +17,7 @@ const toggleShowBalance = async () => {
   <Ion-Header>
     <div class="flex items-center justify-between">
       <div class="flex gap-2 items-center">
-        <Button icon="pi pi-bars" variant="text" rounded aria-label="Menu" />
-
         <UserInfo :firstName="firstName" />
-
       </div>
       <div class="flex">
         <Button @click="toggleShowBalance"

@@ -1,60 +1,17 @@
 import { createRouter, createWebHistory } from "@ionic/vue-router";
-import HomePage from "@/pages/Home.vue";
-import Index from "@/pages/Auth/Index.vue";
-import Register from "@/pages/Auth/Register.vue";
 import authMiddleware from "@/middlewares/auth";
+import authRoutes from "./groups/auth";
+import transactionRoutes from "./groups/transactions";
+import homeRoutes from "./groups/home";
+import reportsRoutes from "./groups/reports";
+import savingsRoutes from "./groups/savings";
 
 const routes = [
-  {
-    path: "/",
-    redirect: "/home",
-    meta: {
-      auth: true,
-    },
-  },
-  {
-    path: "/home",
-    name: "Home",
-    component: HomePage,
-    meta: {
-      auth: true,
-    },
-  },
-  {
-    path: "/transactions",
-    name: "Transactions",
-    component: () => import("@/pages/Transactions/Index.vue"),
-    meta: {
-      auth: true,
-    },
-  },
-  {
-    path: "/transactions/create",
-    name: "CreateTransaction",
-    component: () => import("@/pages/Transactions/Create.vue"),
-    meta: {
-      auth: true,
-    },
-  },
-  {
-    path: "/message/:id",
-    component: () => import("@/pages/ViewMessage.vue"),
-    meta: {
-      auth: true,
-    },
-  },
-  {
-    path: "/auth",
-    component: Index,
-  },
-  {
-    path: "/auth/register",
-    component: Register,
-  },
-  {
-    path: "/auth/login",
-    component: () => import("@/pages/Auth/Login.vue"),
-  },
+  ...homeRoutes,
+  ...authRoutes,
+  ...transactionRoutes,
+  ...reportsRoutes,
+  ...savingsRoutes
 ];
 
 const router = createRouter({

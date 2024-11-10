@@ -1,11 +1,18 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, onMounted } from 'vue';
 import Widgets from './Widgets.vue';
 import { useUserStore } from '@/stores/UserStore';
 
 const userStore = useUserStore();
 
 const showBalance = computed(() => userStore.showBalance);
+
+const incomes = computed(() => userStore.monthIncome);
+const expenses = computed(() => userStore.monthExpense);
+
+onMounted(() => {
+  userStore.getMonthResume();
+});
 </script>
 
 <template>
@@ -22,6 +29,9 @@ const showBalance = computed(() => userStore.showBalance);
       </p>
     </div>
 
-    <Widgets :showBalance />
+    <Widgets :showBalance 
+      :incomes
+      :expenses
+    />
   </div>
 </template>

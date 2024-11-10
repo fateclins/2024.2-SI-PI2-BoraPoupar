@@ -2,7 +2,6 @@
 import { Button, InputText, InputNumber, IftaLabel, Textarea, Select } from 'primevue';
 import InputGroup from 'primevue/inputgroup';
 import InputGroupAddon from 'primevue/inputgroupaddon';
-import { ref, watch } from 'vue';
 
 const props = defineProps(['error', 'disable', 'categories', 'categoriesSelectDisabled']);
 
@@ -30,14 +29,14 @@ const submit = () => {
       <InputGroupAddon>
         <i class="pi pi-user"></i>
       </InputGroupAddon>
-      <InputText v-model="name" placeholder="Nome" :disabled="disable" />
+      <InputText :required="true" v-model="name" placeholder="Nome" :disabled="disable" />
     </InputGroup>
 
     <InputGroup class="mt-4">
       <InputGroupAddon>
         <span>R$</span>
       </InputGroupAddon>
-      <InputNumber placeholder="Valor" inputId="amount" v-model="amount" :disabled="disable" locale="pt-BR"
+      <InputNumber :required="true" placeholder="Valor" inputId="amount" v-model="amount" :disabled="disable" locale="pt-BR"
         :minFractionDigits="0" :maxFractionDigits="2" />
     </InputGroup>
 
@@ -45,7 +44,7 @@ const submit = () => {
       <InputGroupAddon>
         <i class="pi pi-tag"></i>
       </InputGroupAddon>
-      <Select v-model="type" :options="types" optionLabel="name" placeholder="Selecione o tipo"
+      <Select v-model="type" :required="true" :options="types" optionLabel="name" placeholder="Selecione o tipo"
         class="w-full md:w-56" />
     </InputGroup>
 

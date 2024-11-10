@@ -9,7 +9,7 @@ use Illuminate\Http\JsonResponse;
 
 class CategoriesListController extends Controller
 {
-    public function __invoke(Request $request): JsonResponse
+    public function __invoke(Request $request)
     {
         $type = $request->query('type');
 
@@ -18,8 +18,6 @@ class CategoriesListController extends Controller
                 return $query->where('type', $type);
             })
             ->get();
-
-            ds($categories);
 
         return response()->json($categories, 200);
     }

@@ -1,9 +1,13 @@
 import { defineStore } from "pinia";
 import { Preferences } from "@capacitor/preferences";
+import api from "@/services/http";
+import { getToken } from "@/utils/getToken";
 
 export const useUserStore = defineStore("user", {
   state: () => ({
     user: {},
+    monthIncome: 0,
+    monthExpense: 0,
     showBalance: false,
   }),
 
@@ -34,6 +38,26 @@ export const useUserStore = defineStore("user", {
 
       this.showBalance = JSON.parse(value);
     },
+
+    async getMonthResume() {
+      const token = await getToken();
+
+      try {
+        const response = await api.get("transactions/monthly", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        this.monthIncome = response.data.incomes;
+        this.monthExpense = response.data.expenses;
+
+        return response.data;
+
+      } catch (error) {
+        console.error(error);
+      }
+    }
   },
 
   getters: {

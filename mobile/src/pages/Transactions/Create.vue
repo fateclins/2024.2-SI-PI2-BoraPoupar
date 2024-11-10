@@ -17,6 +17,8 @@ const amount = ref(0);
 const type = ref('');
 const note = ref('');
 const category = ref('');
+const error = ref('');
+const disable = ref(false);
 
 watch(type, async (newValue) => {
   categoriesSelectDisabled.value = true;
@@ -27,6 +29,37 @@ watch(type, async (newValue) => {
   }
   categoriesSelectDisabled.value = false;
 });
+
+const submit = async () => {
+  disable.value = true;
+  
+  try {
+    await useTransaction.createTransaction({
+      name: name.value,
+      amount: amount.value,
+      type: type.value.value,
+      note: note.value,
+      category_id: category.value.id,
+    });
+
+    router.push('/transactions');
+
+    resetForm();
+  } catch (err) {
+    error.value = err.message;
+    disable.value = false;
+  }
+};
+
+const resetForm = () => {
+  name.value = '';
+  amount.value = 0;
+  type.value = '';
+  note.value = '';
+  category.value = '';
+  error.value = '';
+  disable.value = false;
+};
 </script>
 
 <template>
@@ -34,7 +67,7 @@ watch(type, async (newValue) => {
     <Button @click="router.push('/transactions')" class="!-ml-2 -!mt-2" icon="pi pi-arrow-left" rounded
       aria-label="Nova transaction" />
 
-    <CreateTransactionForm :categories v-model:name="name" v-model:amount="amount" v-model:type="type"
-      v-model:note="note" v-model:category="category" :categoriesSelectDisabled @submit="" />
+    <CreateTransactionForm :categories v-model:name="name" v-model:amount="amount" v-model:type="type" :error="error"
+      v-model:note="note" v-model:category="category" :categoriesSelectDisabled @submit="submit" />
   </AuthLayout>
 </template>

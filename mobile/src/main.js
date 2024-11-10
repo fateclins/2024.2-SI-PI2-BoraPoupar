@@ -4,7 +4,7 @@ import router from "@/router/index.js";
 import PrimeVue from "primevue/config";
 import Aura from "@primevue/themes/aura";
 import { createPinia } from 'pinia'
-
+import ToastService from 'primevue/toastservice';
 
 const pinia = createPinia();
 import { IonicVue } from "@ionic/vue";
@@ -46,6 +46,7 @@ const app = createApp(App);
 
 app.use(IonicVue);
 app.use(router);
+app.use(ToastService);
 
 router.isReady().then(() => {
   app.mount("#app");
