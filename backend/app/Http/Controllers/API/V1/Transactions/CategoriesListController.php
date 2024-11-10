@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class CategoriesListController extends Controller
 {
@@ -13,11 +14,13 @@ class CategoriesListController extends Controller
     {
         $type = $request->query('type');
 
-        $categories = Category::select('id', 'name', 'type')
-            ->when($type, function ($query, $type) {
-                return $query->where('type', $type);
-            })
-            ->get();
+        $categories = Cache::remember("categories_{$type}", 60, function () use ($type) {
+            return Category::select('id', 'name', 'type')
+                ->when($type, function ($query, $type) {
+                    return $query->where('type', $type);
+                })
+                ->get();
+        });
 
         return response()->json($categories, 200);
     }

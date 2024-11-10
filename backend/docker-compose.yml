@@ -1,0 +1,70 @@
+services:
+    laravel1:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        restart: unless-stopped
+        working_dir: /var/www/
+        volumes:
+            - ./:/var/www
+        depends_on:
+            - redis
+        networks:
+            - laravel_network
+        expose:
+            - "9000"
+
+    laravel2:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        restart: unless-stopped
+        working_dir: /var/www/
+        volumes:
+            - ./:/var/www
+        depends_on:
+            - redis
+        networks:
+            - laravel_network
+        expose:
+            - "9000"
+
+    nginx:
+        image: nginx:alpine
+        restart: unless-stopped
+        ports:
+            - "8000:80"
+        volumes:
+            - ./:/var/www
+            - ./infra/nginx/:/etc/nginx/conf.d/
+        networks:
+            - laravel_network
+        depends_on:
+            - laravel1
+            - laravel2
+
+    mysql:
+        image: mysql:5.7.22
+        restart: unless-stopped
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE:-laravel}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root}
+            MYSQL_PASSWORD: ${DB_PASSWORD:-userpass}
+        volumes:
+            - ./.infra/mysql/dbdata:/var/lib/mysql
+        ports:
+            - "3306:3306"
+        networks:
+            - laravel_network
+
+    redis:
+        image: redis:latest
+        restart: unless-stopped
+        ports:
+            - "6379:6379"
+        networks:
+            - laravel_network
+
+networks:
+    laravel_network:
+        driver: bridge
