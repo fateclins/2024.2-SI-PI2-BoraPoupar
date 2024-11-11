@@ -4,7 +4,7 @@
   </ion-app>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { IonApp, IonRouterOutlet } from '@ionic/vue';
 
 localStorage.theme = 'light';

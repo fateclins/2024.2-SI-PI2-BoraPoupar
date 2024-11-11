@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import { IonPage, IonContent } from '@ionic/vue';
 import LoginForm from '@/components/Auth/LoginForm.vue';
 import { useAuthStore } from "@/stores/AuthStore";
-import { useIonRouter } from '@ionic/vue';
+import { useRouter } from 'vue-router';
 import { Button } from 'primevue';
 
 const { login } = useAuthStore();
@@ -13,7 +13,7 @@ const password = ref('');
 const error = ref('');
 const disable = ref(false);
 
-const router = useIonRouter();
+const router = useRouter();
 
 const submit = async () => {
   try {
@@ -24,7 +24,7 @@ const submit = async () => {
       password: password.value
     });
 
-    router.push('/');
+    router.push('/home');
 
   } catch (err) {
     error.value = err.message;

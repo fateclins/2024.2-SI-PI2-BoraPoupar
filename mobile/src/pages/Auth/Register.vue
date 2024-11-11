@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import { IonPage, IonContent } from '@ionic/vue';
 import RegisterForm from '@/components/Auth/RegisterForm.vue';
 import { useAuthStore } from "@/stores/AuthStore";
-import { useIonRouter } from '@ionic/vue';
+import { useRouter } from 'vue-router';
 import { Button } from 'primevue';
 
 const { register } = useAuthStore();
@@ -14,7 +14,7 @@ const email = ref('');
 const error = ref('');
 const disable = ref(false);
 
-const router = useIonRouter();
+const router = useRouter();
 
 const submit = async () => {
   try {
@@ -22,7 +22,7 @@ const submit = async () => {
 
     await register({ name: name.value, email: email.value, password: password.value });
 
-    router.push('/');
+    router.push('/home');
 
   } catch (err) {
     error.value = err.message;

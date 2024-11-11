@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { Button } from 'primevue';
 import { useSavingStore } from '@/stores/SavingStore';
 

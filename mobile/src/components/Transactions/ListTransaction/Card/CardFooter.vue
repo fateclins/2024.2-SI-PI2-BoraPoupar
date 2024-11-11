@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { Button } from 'primevue';
 import { useTransactionStore } from '@/stores/TransactionStore';
 
@@ -12,7 +12,6 @@ const deleteTransaction = () => {
 </script>
 <template>
   <div class="flex gap-4 mt-1">
-    <Button @click="deleteTransaction()"
-    label="Excluir" severity="danger" outlined class="w-full" />
+    <Button @click="deleteTransaction()" label="Excluir" severity="danger" outlined class="w-full" />
   </div>
 </template>
