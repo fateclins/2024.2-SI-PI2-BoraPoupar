@@ -14,18 +14,19 @@ const toggleShowBalance = async () => {
 </script>
 
 <template>
-  <Ion-Header>
+  <div class="">
     <div class="flex items-center justify-between">
-      <div class="flex gap-2 items-center">
+      <div class="flex items-center gap-2">
         <UserInfo :firstName="firstName" />
       </div>
       <div class="flex">
         <Button @click="toggleShowBalance"
             icon="pi pi-eye" variant="text" rounded aria-label="Esconder valores" />
+            
         <Button icon="pi pi-bell" variant="text" rounded aria-label="Notificações" />
       </div>
     </div>
-  </Ion-Header>
+  </div>
 </template>
 
 <style scoped></style>

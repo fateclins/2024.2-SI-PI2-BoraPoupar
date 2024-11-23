@@ -10,6 +10,9 @@ export const useAuthStore = defineStore("auth", {
 
   actions: {
     async register(form) {
+      const test = await api.get("ping");
+      console.log(test);
+
       if (!form.name || !form.email || !form.password) {
         throw new Error("Todos os campos são obrigatórios");
       }
@@ -33,16 +36,14 @@ export const useAuthStore = defineStore("auth", {
 
         throw new Error("Houve um erro ao registrar sua conta");
       } catch (error) {
+        console.log(error);
         if (error.response) {
           // O servidor respondeu com um status diferente de 2xx
 
           throw new Error(error.response.data.message);
-        } else if (error.request) {
-          // A requisição foi feita, mas nenhuma resposta foi recebida
-          throw new Error("Erro ao registrar sua conta");
         } else {
           // Algo aconteceu ao configurar a requisição
-          throw new Error("Erro ao registrar sua conta");
+          throw new Error("Erro ao registrar sua conta" + error.message);
         }
       }
     },

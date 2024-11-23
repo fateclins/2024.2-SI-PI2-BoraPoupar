@@ -22,6 +22,7 @@ const save = () => {
 <template>
   <Dialog v-model:visible="visible" header="Poupe!" modal :style="{ width: '25rem' }">
 
+    <p>Valor reservado: </p>
     <InputGroup class="mt-4 mb-4">
       <InputGroupAddon>
         <span>R$</span>

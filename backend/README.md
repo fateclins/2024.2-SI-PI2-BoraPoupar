@@ -6,8 +6,7 @@ API para o aplicativo BoraPoupar, que tem como um dos objetivos ajudar o usuári
 
 ## Containers
 
-- Nginx (Proxy reverso + Balanceamento de carga)
-- Laravel 11 / PHP 8.3 (Dois containers)
+- Laravel 11 / PHP 8.3
 - MySQL 8.0
 - Redis 7.0
 

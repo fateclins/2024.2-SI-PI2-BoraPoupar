@@ -15,7 +15,7 @@ export default async function authMiddleware(to, from, next) {
     } 
     
     else {
-      next({ path: "/auth/login" });
+      next({ path: "/auth/" });
     }
 
   } 

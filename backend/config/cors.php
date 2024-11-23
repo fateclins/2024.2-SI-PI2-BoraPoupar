@@ -6,7 +6,9 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://localhost:8100', 'http://127.0.0.1:8100', 'https://21c2-189-126-185-232.ngrok-free.app'],
+    //'allowed_origins' => ['http://localhost:8100', 'http://127.0.0.1:8100', 'http://192.168.3.8:8100'],
+    
+    'allowed_origins' => ['*'],
 
     'allowed_origins_patterns' => [],
 
